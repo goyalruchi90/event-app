@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html ng-app="eventApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Conference360</title>
+    <!--Bootstrap links-->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="styles/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/myStyle.css" rel="stylesheet">
+
+</head>
+
+<body ng-cloak>
+    <!--Global header-->
+    <nav class="navbar navbar-inverse event-navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+                <a class="navbar-brand" href="#eventList">Conference360</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Page content-->
+    <div ng-view class="content-container"></div>
+
+    <!--Footer-->
+    <div class="global-footer">
+        <div class="footer-grid">
+            <div class="text-centered">
+                <div class="footer-cell">
+                    <div class="footer-corp-links">
+                        <ul class="footer-links footer-links--inline footer-links--padding-right">
+                            <li>
+                                <a href="#" class="text-body-small">Help</a>
+                            </li>
+                            </li>
+                            <li>
+                                <a href="#" class="text-body-small">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-body-small">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="l-pad-vert-4 l-sm-pad-vert-3 hide-large">
+                    <p class="footer-copyright text-body-small l-mar-top-2">© 2016 Conference360</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Loading indicator-->
+        <div ng-show="loadingIndicator" class="loadingIndicatorOverlay" id="loadingIndicatorOverlay"></div>
+  <!--Scripts-->
+<script src="frameworks/angular.min.js"></script>
+<script src="frameworks/angular-route.js"></script>
+<script src="frameworks/jquery-1.12.2.min.js"></script>
+<script src="frameworks/bootstrap.min.js"></script>
+
+<script src="js/myScript.js"></script>
+<script src="js/router.js"></script> 
+
+</body>
+
+</html>

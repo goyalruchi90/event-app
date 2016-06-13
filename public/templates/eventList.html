@@ -1,0 +1,45 @@
+
+<div class="container event-list">
+    <nav class="navbar  row">
+  
+    <div class="col-md-8 col-xs-6 col-lg-9">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Events" ng-model="seachEvent">
+        </div>
+      </form>
+      </div>
+       <div class="col-xs-5 col-md-4 col-xs-offset-1 col-lg-3" >
+       <div class="dropdown">
+    <select  class="form-control event-status-dropdown" name="event_status_dropdown" ng-model="selectedEventStaus">
+            <option value="">Event Status</option>
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+            <option value="Sold Out">Sold Out</option>
+         </select>
+  </div>
+</div>  
+ </nav>
+    <div class="list-group">
+
+        <a href="#eventDetails/{{event.id}}" class="list-group-item row" ng-repeat="event in events | orderBy:'start_date__c' | filter: selectedEventStaus | filter: seachEvent " ng-show="'{{event.status__c}}' != 'Draft'">
+
+            <div class="event-img col-xs-4 event-image img-responsive">
+
+            </div>
+            <div class="event-basic-desc col-xs-6">
+                <div class="event-date">{{event.start_date__c | date}} to {{event.end_date__c | date}}</div>
+
+                <div class="event-title">{{event.name | uppercase}}</div>
+
+                <div class="other-detail">Remaining Seats : {{event.remaining_seats__c}}</div>
+                <div class="other-detail">Registrarion Limit : {{event.registration_limit__c}} </div>
+            </div>
+            <div class="col-xs-2 status-main-div">
+                <div class="status-icon" ng-class="'{{event.status__c}}' == 'Open' ? 'green-background' :('{{event.status__c}}' == 'Sold Out' || 'Closed' ? 'red-background': 'no-background')">{{event.status__c}}</div>
+            </div>
+        </a>
+    </div>
+   
+</div>
+<div ng-show="loadingIndicator" class="loadingIndicatorOverlay" id="loadingIndicatorOverlay"></div>

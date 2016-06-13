@@ -1,0 +1,67 @@
+<div class="container register-container">
+<div class="alert alert-danger" role="alert" ng-show="formErrorAlert">
+         Please select all the required fields.
+      </div>
+      <div class="alert alert-danger" role="alert" ng-show="sessionErrorAlert">
+         Please select a session.
+      </div>
+      <div class="alert alert-success" role="alert" ng-show="formSuccessAlert">
+         Registration Successfull. Please check your e-mail for details.
+      </div>
+      <div class="alert alert-danger" role="alert" ng-show="formAlreadyRegister">
+         You are already registered to this Event/Session. 
+      </div>
+<h3>{{eventData.name}} </h3> 
+   <form id="attendeeRegistrationForm" ng-submit='registerAttendee(registerForm)' class="registerForm" name="registerForm" novalidate>  
+      <div class="form-group">
+         <label for="firstName">First Name</label>
+         <input type="text" name="attendee_firstName" required class="form-control" id="attendee_firstName" placeholder="Required" ng-model="form.attendee_firstName">
+         <span style="color:red" ng-show="registerForm.attendee_firstName.$touched && registerForm.attendee_firstName.$invalid">
+         <span ng-show="registerForm.attendee_firstName.$error.required">First Name is required.</span>
+         </span>
+      </div>
+
+      <div class="form-group">
+         <label for="lastName">Last Name</label>
+         <input type="text" name="attendee_lastName" required class="form-control" id="attendee_lastName" placeholder="Required" ng-model="form.attendee_lastName">
+         <span style="color:red" ng-show="registerForm.attendee_lastName.$touched && registerForm.attendee_lastName.$invalid">
+         <span ng-show="registerForm.attendee_lastName.$error.required">Last Name is required.</span>
+      </div>
+
+      <div class="form-group">
+         <label for="email">Email</label>
+         <input type="email" name="attendee_email" required class="form-control" id="attendee_email" placeholder="Required" ng-model="form.attendee_email">
+         <span style="color:red" ng-show="registerForm.attendee_email.$touched && registerForm.attendee_email.$invalid">
+         <span ng-show="registerForm.attendee_email.$error.required">Email is required.</span>
+         <span ng-show="registerForm.attendee_email.$error.email">Invalid email address.</span>
+         </span>
+      </div>
+
+      <div class="form-group">
+         <label for="phone">Phone</label>
+         <input type="tel" required class="form-control" name="attendee_phone" placeholder="Required" ng-model="form.attendee_phone">
+         <span style="color:red" ng-show="registerForm.attendee_phone.$touched && registerForm.attendee_phone.$invalid">
+         <span ng-show="registerForm.attendee_phone.$error.required">Phone number is required.</span>
+      </div>
+
+      <div class="form-group">
+         <label for="company">Company</label>
+         <input type="text" required class="form-control" name="attendee_company" placeholder="Required" ng-model="form.attendee_company">
+         <span style="color:red" ng-show="registerForm.attendee_company.$touched && registerForm.attendee_company.$invalid">
+         <span ng-show="registerForm.attendee_company.$error.required">Company Name is required.</span>
+      </div>
+
+      <div class="form-group" ng-show="sessionName[0].length">
+         <select id="attendee_session" class="form-control" name="attendeeSession" ng-model="form.selectedSession" ng-required>
+            <option value="">Select Session</option>
+            <option ng:repeat="session in sessionName[0]" value="{{session.sfid}}">{{session.name}}</option>
+         </select>
+         <span style="color:red" ng-show="registerForm.attendeeSession.$touched && registerForm.attendeeSession.$invalid">
+         <span ng-show="registerForm.attendeeSession.$value">Session is required.</span>
+      </div>
+
+      <button class="btn btn-primary event-detail-reg-btn btn-lg btn-block">Register</button>
+
+   </form>
+</div>
+<div ng-show="loadingIndicator" class="loadingIndicatorOverlay" id="loadingIndicatorOverlay"></div>

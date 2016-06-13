@@ -1,0 +1,35 @@
+
+<div class="container event-details">
+    <div class="row cover-img event-image-lg img-responsive">
+
+    </div>
+    <div class="row event-basic-desc">
+        <p class="event-title">{{event.name | uppercase}}</p>
+        <p class="event-date">{{event.start_date__c | date :'medium' }} to {{event.end_date__c | date : 'medium' }} <span ng-show="event.location__c">at {{event.location__c}}</span></p>
+    </div>
+    <div class="event-details-txt" ng-show="event.event_description__c">Event Details
+        <div class="event-description-txt">{{event.event_description__c}}</div>
+    </div>
+    <div class="row session-details">
+
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="session in sessions | orderBy:'start_date__c'">
+
+
+                <div class="session-basic-desc">
+                    <div class="event-title">{{session.name | uppercase}}</div>
+                    <div class="event-date">Start Date: {{session.start_date__c | date :'medium'}} </div>
+                    <div class="event-date">End Date: {{session.end_date__c | date:'medium'}}</div>
+                    <div class="other-detail">Remaining Seats : {{session.remaining_seats__c}}</div>
+                    <div class="other-detail">Registrarion Limit : {{session.registration_limit__c}} </div>
+                    <div class="other-detail">Status : {{session.status__c}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="event.status__c == 'Open'">
+        <a href="#registerAttendee/{{event.id}}" class="btn btn-primary event-detail-reg-btn btn-lg btn-block"> Register</a>
+    </div>
+
+</div>
+<div ng-show="loadingIndicator" class="loadingIndicatorOverlay" id="loadingIndicatorOverlay"></div>
