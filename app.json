@@ -1,0 +1,12 @@
+{
+  "name": "event-app",
+  "description": "Heroku Connect App - Event App",
+  "repository": "https://git.heroku.com/event-app-conference360.git",
+  "success_url": "/setup.html",
+  "env": {
+    "PGSSLMODE": {
+      "description": "Require SSL for Postgres",
+      "value": "require"
+    }
+  }
+}
