@@ -2,6 +2,21 @@
 var app = angular.module("eventApp", ['ngRoute']);
 app.controller('MainController', function() {});
 
+//directives
+app.directive('globalHeader',function(){
+return{
+  restrict:"E",
+  templateUrl:"/templates/header.html"
+};
+});
+
+app.directive('globalFooter',function(){
+return{
+  restrict:"E",
+  templateUrl:"/templates/footer.html"
+};
+});
+
 //Service 
 app.service('shareDataService', function() {
     var myEventList = [];
