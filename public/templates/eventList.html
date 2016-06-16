@@ -22,7 +22,7 @@
  </nav>
     <div class="list-group">
 
-        <a href="#eventDetails/{{event.id}}" class="list-group-item row" ng-repeat="event in events | orderBy:'start_date__c' | filter: selectedEventStaus | filter: seachEvent " ng-show="'{{event.status__c}}' != 'Draft'">
+        <a href="#eventDetails/{{event.id}}" class="list-group-item row" ng-repeat="event in events | orderBy:'start_date__c' | filter: {name :seachEvent} | filter: {status__c : selectedEventStaus } " ng-show="'{{event.status__c}}' != 'Draft'">
 
             <div class="event-img col-xs-4 event-image img-responsive">
 
